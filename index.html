@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Birthday Wishes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap');
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFE66D;
+            --dark-color: #292F36;
+            --light-color: #F7FFF7;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF9F9;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .birthday-font {
+            font-family: 'Pacifico', cursive;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            opacity: 1;
+            z-index: 9999;
+            animation: confetti-fall 3s ease-in forwards;
+            transform: translateY(-100vh) rotate(0deg);
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-front {
+            transition: all 0.5s ease;
+            backface-visibility: hidden;
+        }
+
+        .card-back {
+            transition: all 0.5s ease;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+        }
+
+        .card-flipped .card-front {
+            transform: rotateY(180deg);
+        }
+
+        .card-flipped .card-back {
+            transform: rotateY(0deg);
+        }
+
+        .game-piece {
+            transition: transform 0.3s ease;
+        }
+
+        .game-piece:hover {
+            transform: scale(1.1);
+        }
+
+        .photo-gallery img {
+            transition: transform 0.3s ease;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+        }
+          /* Header Balloon Styles */
+        .balloon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 60px; /* Base width */
+            height: 80px; /* Base height */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Balloon shape */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: float 8s infinite ease-in-out;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
+            z-index: 0; /* Ensure balloons are behind content */
+        }
+
+        .balloon-string {
+            position: absolute;
+            bottom: -30px; /* Position below the balloon */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 30px; /* Length of the string */
+            background-color: rgba(255, 255, 255, 0.7); /* White string */
+            z-index: -1; /* Ensure string is behind balloon body if needed */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        /* New Cake Decorator Game Styles */
+        .cake-decorator-game-container {
+            width: 100%;
+            max-width: 1000px;
+            background: #EBCFC4 ;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto; /* Center the game container */
+        }
+
+        .cake-decorator-header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffd1dc 0%, #b9152d 100%);
+            position: relative;
+        }
+
+        .cake-decorator-header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .cake-decorator-header p {
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+        .cake-decorator-content {
+            display: flex;
+            min-height: 500px;
+        }
+
+        .cake-decorator-tools-panel {
+            width: 220px;
+            background: #e9d7c9;
+            border-right: 1px solid #ffeff5;
+            padding: 25px 15px;
+            overflow-y: auto;
+        }
+
+        .cake-decorator-category-title {
+            font-size: 1.3rem;
+            color: #f8eddc;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #ffd1dc;
+            position: relative;
+        }
+
+        .cake-decorator-category-title i {
+            margin-right: 10px;
+        }
+
+        .cake-decorator-decoration-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cake-decorator-decoration-item {
+            background: #fff;
+            border-radius: 15px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ffeff5;
+        }
+
+        .cake-decorator-decoration-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #ffd1dc;
+        }
+
+        .cake-decorator-decoration-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .cake-decorator-decoration-name {
+            font-size: 0.85rem;
+            color: #7a6a6a;
+        }
+
+        .cake-decorator-cake-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .cake-decorator-cake-base {
+            width: 300px;
+            height: 180px;
+            background: linear-gradient(to bottom, #f5f4ee, #f0dec3);
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            z-index: 2;
+        }
+
+        .cake-decorator-cake-top {
+            width: 350px;
+            height: 50px;
+            background: linear-gradient(to bottom, #d8d3d5, hsl(0, 8%, 95%));
+            border-radius: 50%;
+            position: relative;
+            bottom: 20px;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .cake-decorator-decoration-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .cake-decorator-decoration {
+            position: absolute;
+            pointer-events: auto;
+            cursor: move;
+            transition: transform 0.2s;
+            z-index: 20;
+        }
+
+        .cake-decorator-decoration:hover {
+            transform: scale(1.1);
+        }
+
+        /* Custom styles for candle */
+        .cake-decorator-candle {
+            width: 15px;
+            height: 50px;
+            position: relative;
+        }
+
+        .cake-decorator-candle-stick {
+            width: 100%;
+            height: 40px;
+            background: #f0e68c;
+            border-radius: 5px 5px 0 0;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .cake-decorator-candle-flame {
+            width: 12px;
+            width: 12px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ffd700, #ff8c00);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        .cake-decorator-candle-flame::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05) translateY(-2px); }
+            100% { transform: translateX(-50%) scale(1.1) translateY(-4px); }
+        }
+
+        /* Custom styles for Unicorn (Emoji-like) */
+        .cake-decorator-unicorn {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem; /* Make the emoji large */
+            line-height: 1;
+            color: transparent; /* Hide default text color */
+            text-shadow: 0 0 0 #000; /* Use text-shadow to make emoji visible */
+        }
+        .cake-decorator-unicorn::before {
+            content: '🦄'; /* The actual unicorn emoji */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #a2d5f2; /* Base color for the emoji */
+            text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px 1px 0 #fff,
+                1px 1px 0 #fff,
+                0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+        }
+         /* Custom styles for Butterfly (Emoji-like) */
+        .cake-decorator-butterfly-emoji {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem; /* Make the emoji large */
+            line-height: 1;
+            color: transparent; /* Hide default text color */
+            text-shadow: 0 0 0 #000; /* Use text-shadow to make emoji visible */
+        }
+        .cake-decorator-butterfly-emoji::before {
+            content: '🦋'; /* The actual butterfly emoji */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #c26588; /* Base color for the emoji */
+            text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px 1px 0 #fff,
+                1px 1px 0 #fff,
+                0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+        }
+
+
+        .cake-decorator-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 25px;
+            border-top: 1px solid #ffeff5;
+        }
+
+        .cake-decorator-control-btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cake-decorator-reset-btn {
+            background: #ffd1dc;
+            color: #ff6b8b;
+        }
+
+        .cake-decorator-save-btn {
+            background: linear-gradient(135deg, #ff9eb5 0%, #ff6b8b 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 139, 0.3);
+        }
+
+        .cake-decorator-control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cake-decorator-save-btn:hover {
+            box-shadow: 0 8px 20px rgba(255, 107, 139, 0.4);
+        }
+
+        .cake-decorator-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            color: #ff6b8b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .cake-decorator-notification.show {
+            opacity: 1;
+        }
+
+        .cake-decorator-floating-element {
+            position: absolute;
+
+        }
+
+        .cake-decorator-floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            font-size: 2rem;
+            color: #f5f0f0;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .cake-decorator-floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            font-size: 2.5rem;
+            color: #f5f0f0;
+            animation: float 10s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+
+        .cake-decorator-floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            font-size: 2rem;
+            color: #f5f0f0;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+
+        .cake-decorator-floating-element:nth-child(4) {
+            top: 10%;
+            left: 50%;
+            font-size: 2rem;
+            color: #f5f0f0;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+
+        .cake-decorator-floating-element:nth-child(5) {
+            bottom: 20%;
+            left: 80%;
+            font-size: 2rem;
+            color: #f5f0f0;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+
+        .cake-decorator-floating-element:nth-child(6) {
+            bottom: 60%;
+            left: 10%;
+            font-size: 2rem;
+            color: #f5f0f0;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+
+        .cake-decorator-floating-element:nth-child(7) {
+            bottom: 10%;
+            right: 50%;
+            font-size: 2rem;
+            color: #f5f0f0;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+
+        @media (max-width: 768px) {
+            .cake-decorator-content {
+                flex-direction: column;
+            }
+
+            .cake-decorator-tools-panel {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ffeff5;
+                max-height: 200px;
+                overflow-x: hidden;
+            }
+
+            .cake-decorator-decoration-items {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .cake-decorator-cake-area {
+                min-height: 400px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen">
+    <!-- Birthday Header with Balloons -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 py-16">
+        <div class="balloon-container">
+            <div class="balloon balloon-1 bg-pink-400" style="left: 5%; animation-delay: 0s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-2 bg-yellow-300" style="left: 15%; animation-delay: 1s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-3 bg-blue-400" style="left: 25%; animation-delay: 2s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-4 bg-purple-400" style="left: 35%; animation-delay: 3s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-5 bg-red-400" style="left: 45%; animation-delay: 4s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-6 bg-green-400" style="left: 55%; animation-delay: 5s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-7 bg-orange-400" style="left: 65%; animation-delay: 6s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-8 bg-teal-400" style="left: 75%; animation-delay: 7s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-9 bg-indigo-400" style="left: 85%; animation-delay: 8s;">
+                <div class="balloon-string"></div>
+            </div>
+            <div class="balloon balloon-10 bg-yellow-200" style="left: 95%; animation-delay: 9s;">
+                <div class="balloon-string"></div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="birthday-font text-5xl md:text-7xl font-bold text-white drop-shadow-lg">Happy Birthday!</h1>
+            <p class="mt-4 text-xl text-white">Make a wish and celebrate!</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Birthday Countdown -->
+    <section class="mb-16 text-center">
+        <h2 class="birthday-font text-4xl mb-4 text-purple-600">Countdown to Birthday!</h2>
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mb-8">
+            <label for="birthday-input" class="block text-gray-700 mb-2">Enter your birthday:</label>
+            <input type="date" id="birthday-input" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300">
+            <button id="set-birthday-btn" class="mt-4 bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg">
+                Start Countdown
+            </button>
+        </div>
+        <div class="countdown-container flex justify-center gap-4">
+            <div class="countdown-box bg-pink-100 p-4 rounded-lg">
+                <div class="countdown-number text-3xl font-bold" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-box bg-blue-100 p-4 rounded-lg">
+                <div class="countdown-number text-3xl font-bold" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-box bg-yellow-100 p-4 rounded-lg">
+                <div class="countdown-number text-3xl font-bold" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-box bg-green-100 p-4 rounded-lg">
+                <div class="countdown-number text-3xl font-bold" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Birthday Wishes Section -->
+        <section class="mb-16">
+            <h2 class="birthday-font text-4xl text-center mb-8 text-pink-600">Special Birthday Wishes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Wish Card 2 -->
+                <div class="card bg-white rounded-2xl shadow-lg p-6 transform transition-all duration-300">
+                    <div class="text-blue-500 text-5xl mb-4">🎉</div>
+                    <h3 class="text-xl font-semibold mb-2">Magical Year Ahead!</h3>
+                    <p class="text-gray-600">Wishing you a year filled with magical moments, success, and prosperity!</p>
+                    <button class="mt-4 bg-gradient-to-r from-blue-400 to-purple-500 text-white px-4 py-2 rounded-full play-btn">Birthday Card</button>
+                </div>
+
+                <!-- Wish Card 1 -->
+                <div class="card bg-white rounded-2xl shadow-lg p-6 transform transition-all duration-300">
+                    <div class="text-yellow-500 text-5xl mb-4"><div class="cake-decorator-decoration-icon"><i class="fas fa-birthday-cake"></i></div></div>
+                    <h3 class="text-xl font-semibold mb-2">Sweet Birthday!</h3>
+                    <p class="text-gray-600">May your birthday be filled with sweetness, joy, and all the happiness in the world!</p>
+                    <button class="mt-4 bg-gradient-to-r from-yellow-300 to-yellow-500 text-white px-4 py-2 rounded-full play-btn">Play Cake Game</button>
+                </div>
+                <!-- Wish Card 3 -->
+                <div class="card bg-white rounded-2xl shadow-lg p-6 transform transition-all duration-300">
+                    <div class="text-red-500 text-5xl mb-4">❤️</div>
+                    <h3 class="text-xl font-semibold mb-2">Heartfelt Wishes</h3>
+                    <p class="text-gray-600">On your special day, we send our heartfelt wishes for love and happiness!</p>
+                    <button class="mt-4 bg-gradient-to-r from-red-400 to-pink-500 text-white px-4 py-2 rounded-full play-btn">Heart Game</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Birthday Card -->
+          <section class="mb-16">
+            <h2 class="birthday-font text-4xl text-center mb-8 text-purple-600">Interactive Birthday Card</h2>
+            <div class="max-w-2xl mx-auto relative h-96 perspective-1000">
+                <div class="card-container relative w-full h-full transition-transform duration-500">
+                    <div class="card-front absolute w-full h-full bg-gradient-to-r from-[#ee9ca7] to-[#ffdde1] rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center">
+                        <div class="mb-6 relative">
+                            <div class="w-40 h-40 bg-gradient-to-r from-yellow-100 to-pink-100 rounded-full flex items-center justify-center shadow-md">
+                                <div class="text-6xl hover:animate-bounce">🎁</div>
+                                <div class="absolute -right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-pink-200 rounded-full flex items-center justify-center">
+                                    <div class="text-2xl">🎤</div>
+                                </div>
+                            </div>
+                            <div class="absolute -top-4 -right-4 w-10 h-10 bg-red-500 rounded-full"></div>
+                        </div>
+                        <h3 class="birthday-font text-3xl mb-4 text-gray-800">Click to Open Your Gift!</h3>
+                        <p class="text-gray-600 text-center">Flip the card for your birthday surprise!</p>
+                    </div>
+                    <div class="card-back absolute w-full h-full bg-gradient-to-tr from-pink-300 to-cyan-300  rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center">
+                        <h3 class="birthday-font text-3xl mb-4 text-center animate-bounce">Happy Birthday!</h3>
+                        <p class="text-gray-700 mb-6 text-center">May your day be filled with joy, laughter, and wonderful surprises!</p>
+                        <div class="relative mt-8 w-48 h-48 perspective-1000">
+                            <img src="https://img.freepik.com/free-psd/3d-rendering-birthday-icon-design_23-2151930905.jpg" alt="3D Birthday Cake" class="w-full h-full object-contain rounded-lg shadow-xl transform-style-preserve-3d">
+                        </div>
+                        <button class="mt-6 bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full pop-confetti">Blow Out Candle</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Birthday Games Section -->
+        <section class="mb-16">
+            <h2 class="birthday-font text-4xl text-center mb-8 text-blue-600">Birthday Fun & Games</h2>
+
+            <!-- Cake Decorator Game -->
+            <div class="cake-decorator-game-container">
+                <div class="cake-decorator-header">
+                    <h1>Elegant Cake Decorator</h1>
+                    <p>Create your dream cake with beautiful decorations!</p>
+                </div>
+
+                <div class="cake-decorator-content">
+                    <div class="cake-decorator-tools-panel">
+                        <h3 class="cake-decorator-category-title"><i class="fas fa-palette"></i> All Decorations</h3>
+                        <div class="cake-decorator-decoration-items">
+                            <div class="cake-decorator-decoration-item" data-type="custom" data-custom="candle" data-icon="fas fa-birthday-cake" style="color: #f0e68c;">
+                                <div class="cake-decorator-decoration-icon"><i class="fas fa-birthday-cake"></i></div>
+                                <div class="cake-decorator-decoration-name">Candle</div>
+                            </div>
+                            <div class="cake-decorator-decoration-item" data-type="decoration" data-icon="fas fa-crown" style="color: #ffd700;">
+                                <div class="cake-decorator-decoration-icon"><i class="fas fa-crown"></i></div>
+                                <div class="cake-decorator-decoration-name">Crown</div>
+                            </div>
+                            <div class="cake-decorator-decoration-item" data-type="decoration" data-icon="fas fa-gem" style="color: #90d3fa;">
+                                <div class="cake-decorator-decoration-icon"><i class="fas fa-gem"></i></div>
+                                <div class="cake-decorator-decoration-name">Gem</div>
+                            </div>
+                            <div class="cake-decorator-decoration-item" data-type="decoration" data-icon="fas fa-heart" style="color: #ec214d;">
+                                <div class="cake-decorator-decoration-icon"><i class="fas fa-heart"></i></div>
+                                <div class="cake-decorator-decoration-name">Heart</div>
+                            </div>
+                            <div class="cake-decorator-decoration-item" data-type="decoration" data-icon="fas fa-star" style="color: #ffd700;">
+                                <div class="cake-decorator-decoration-icon"><i class="fas fa-star"></i></div>
+                                <div class="cake-decorator-decoration-name">Star</div>
+                            </div>
+
+                           <div class="cake-decorator-decoration-item" data-type="custom" data-custom="butterfly" data-icon="🦋" style="color: #800080;">
+                                <div class="cake-decorator-decoration-icon text-4xl">🦋</div>
+                                <div class="cake-decorator-decoration-name">Butterfly</div>
+                            </div>
+
+                            <div class="cake-decorator-decoration-item" data-type="custom" data-custom="unicorn" data-icon="🦄" style="color: #a2d5f2;">
+                                <div class="cake-decorator-decoration-icon">🦄</div>
+                                <div class="cake-decorator-decoration-name">Unicorn</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-decorator-cake-area">
+                        <div class="cake-decorator-floating-element"><i class="fas fa-cookie"></i></div>
+                        <div class="cake-decorator-floating-element"><i class="fas fa-ice-cream"></i></div>
+                        <div class="cake-decorator-floating-element"><i class="fas fa-birthday-cake"></i></div>
+                        <div class="cake-decorator-floating-element"><i class="fas fa-crown"></i></div>
+                        <div class="cake-decorator-floating-element"><i class="fas fa-star"></i></div>
+                        <div class="cake-decorator-floating-element"><i class="fas fa-heart"></i></div>
+                        <div class="cake-decorator-floating-element"><i class="fas fa-gem"></i></div>
+
+                        
+                        <div class="cake-decorator-cake-base"></div>
+                        <div class="cake-decorator-cake-top"></div>
+
+                        <div class="cake-decorator-decoration-container" id="decorationContainer"></div>
+                    </div>
+                </div>
+
+                <div class="cake-decorator-controls">
+                    <button class="cake-decorator-control-btn cake-decorator-reset-btn" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset Cake
+                    </button>
+                    <button class="cake-decorator-control-btn cake-decorator-save-btn" id="saveBtn">
+                        <i class="fas fa-camera"></i> Save Design
+                    </button>
+                </div>
+
+                <div class="cake-decorator-notification" id="notification">
+                    <i class="fas fa-check-circle"></i>
+                    <span></span>
+                </div>
+            </div>
+
+
+
+        </section>
+
+        <!-- Birthday Photo Gallery -->
+        <section class="mb-16">
+            <h2 class="birthday-font text-4xl text-center mb-8 text-orange-600">Birthday Memories</h2>
+            <div class="photo-gallery grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="assets/a teddy bear and gif.png" alt="Colorful birthday celebration with cake and decorations" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c54844bf-0d03-4fd1-8d96-eb52b96c39fc.png" alt="Group of friends laughing and celebrating birthday with balloons in background" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9fec9e84-1b2d-4698-b988-c7d5473e5c2f.png" alt="Close-up of hands holding sparklers with bokeh lights in the background" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4e1ffc8-d61b-4e31-87b3-a744f40c79e6.png" alt="Birthday gifts wrapped in shiny paper with bows on a wooden table" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="assets/cbirthday picture .png" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="assets/few friends celebrat.png" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="assets/hbd.png" class="w-full h-full object-cover transition-transform">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b060c1a0-bad8-4f7f-817c-f3827fe8de20.png" alt="Close-up of birthday cake being sliced showing layers inside" class="w-full h-full object-cover transition-transform">
+                </div>
+            </div>
+        </section>
+
+        <!-- Birthday Wish Generator -->
+        <section class="mb-16">
+            <h2 class="birthday-font text-4xl text-center mb-8 text-green-600">Personalized Birthday Wish</h2>
+            <div class="bg-white rounded-2xl shadow-xl p-8 max-w-3xl mx-auto">
+                <form id="wish-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="name">Recipient's Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Enter name" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="age">Age</label>
+                        <input type="number" id="age" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" placeholder="Enter age">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 mb-2" for="hobbies">Hobbies/Interests</label>
+                        <input type="text" id="hobbies" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300" placeholder="e.g., painting, hiking, reading">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="relationship">Your Relationship</label>
+                        <select id="relationship" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                            <option value="friend">Friend</option>
+                            <option value="family">Family</option>
+                            <option value="colleague">Colleague</option>
+                            <option value="partner">Partner</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="tone">Message Tone</label>
+                        <select id="tone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300">
+                            <option value="funny">Funny</option>
+                            <option value="heartfelt">Heartfelt</option>
+                            <option value="inspirational">Inspirational</option>
+                            <option value="casual">Casual</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 flex justify-center">
+                        <button type="submit" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">Generate Wish</button>
+                    </div>
+                </form>
+                <div id="generated-wish" class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 hidden">
+                    <h4 class="text-lg font-semibold mb-3">Your Personalized Birthday Wish:</h4>
+                    <div class="wish-content border-l-4 border-blue-400 pl-4 py-2"></div>
+                    <button class="copy-wish mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">Copy Wish</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Birthday Music Player -->
+    <div class="fixed bottom-4 right-4 bg-white p-2 rounded-full shadow-lg z-50">
+        <button id="music-toggle" class="p-2 text-pink-600 hover:text-pink-800 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+        </button>
+        <audio id="birthday-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Birthday Footer -->
+    <footer class="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="birthday-font text-2xl mb-4">Make Every Birthday Special!</p>
+            <p class="mb-4">Share this page with friends to spread birthday joy</p>
+            <div class="flex justify-center space-x-4 mb-6">
+                <a href="#" class="text-white hover:text-yellow-300 transition-colors text-2xl">🎁</a>
+
+                <a href="#" class="text-white text-yellow-300 transition-colors text-2xl"><div class="cake-decorator-decoration-icon"><i class="fas fa-birthday-cake"></i></div></a>
+
+                <a href="#" class="text-white text-red-400 transition-colors text-2xl"><div class="cake-decorator-decoration-icon"><i class="fas fa-heart"></i></div></a>
+
+            </div>
+            <p class="text-sm">Created with ❤️ for birthday celebrations everywhere by Mehrab</p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Birthday Card
+        document.querySelector('.card-container').addEventListener('click', function() {
+            this.classList.toggle('card-flipped');
+        });
+
+        // Confetti Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const confettiBtn = document.querySelector('.pop-confetti');
+            if (confettiBtn) {
+                confettiBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    createConfetti();
+                    this.textContent = "Make a Wish!";
+                });
+            }
+        });
+
+        function createConfetti() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#FF9AA2', '#B5EAD7', '#C7CEEA'];
+            const particles = 100;
+            
+            // Clear any existing confetti
+            const existingConfetti = document.querySelectorAll('.confetti');
+            existingConfetti.forEach(el => el.remove());
+
+            for (let i = 0; i < particles; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = -10 + 'px'; // Start slightly above viewport
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 12 + 5) + 'px';
+                confetti.style.height = (Math.random() * 12 + 5) + 'px';
+                
+                // Random rotation and animation timing
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s ease-in forwards`;
+                confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+                
+                document.body.appendChild(confetti);
+
+                // Remove after animation completes
+                confetti.addEventListener('animationend', function() {
+                    this.remove();
+                });
+            }
+        }
+
+        // Birthday Wish Generator
+        document.getElementById('wish-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const hobbies = document.getElementById('hobbies').value;
+            const relationship = document.getElementById('relationship').value;
+            const tone = document.getElementById('tone').value;
+
+            let wish = '';
+
+            switch(tone) {
+                case 'funny':
+                    wish = `Happy ${age}th birthday, ${name}! `;
+                    wish += `At ${age}, you're ${age < 30 ? `just a spring chicken` : age < 50 ? `in your prime` : `like fine wine - getting better with age`}! `;
+                    wish += `I hope your day is filled with ${hobbies ? hobbies.split(',')[0] : 'fun'}, laughter, and ${relationship === 'family' ? 'awkward family photos' : relationship === 'partner' ? 'romantic moments' : 'great memories'}. `;
+                    wish += age % 10 === 0 ? `Welcome to the ${age}s club - it's all downhill from here!` : `Don't worry, you're still younger than you'll be next year!`;
+                    break;
+
+                case 'heartfelt':
+                    wish = `Dearest ${name}, `;
+                    wish += `on this special ${age}th birthday of yours, I want you to know how much you mean to me. `;
+                    wish += `Your passion for ${hobbies || 'life'} inspires me every day. `;
+                    wish += `May this year bring you ${age < 18 ? 'growth and exciting opportunities' : age < 30 ? 'adventure and self-discovery' : 'peace, prosperity, and joy'}. `;
+                    wish += `With all my love, Happy Birthday!`;
+                    break;
+
+                case 'inspirational':
+                    wish = `Happy Birthday ${name}! `;
+                    wish += `As you turn ${age} today, remember that every year is a new chapter waiting to be written. `;
+                    wish += `Your journey in ${hobbies ? hobbies.split(',')[0] : 'life'} shows us all what dedication looks like. `;
+                    wish += `May this year be filled with ${relationship === 'family' ? 'family bonds' : relationship === 'partner' ? 'love that grows deeper' : 'friendships that strengthen'} and dreams that become realities. `;
+                    wish += `The best is yet to come!`;
+                    break;
+
+                case 'casual':
+                    wish = `Hey ${name}, happy ${age}th! `;
+                    wish += `Hope you have an awesome day ${hobbies ? `filled with ${hobbies}` : 'doing whatever makes you happy'}. `;
+                    wish += `${relationship === 'family' ? 'Family' : relationship === 'partner' ? 'Love' : 'Cheers'} to another great year!`;
+                    break;
+            }
+
+            document.querySelector('#generated-wish .wish-content').textContent = wish;
+            document.getElementById('generated-wish').classList.remove('hidden');
+        });
+
+        document.querySelector('.copy-wish').addEventListener('click', function() {
+            const wishText = document.querySelector('#generated-wish .wish-content').textContent;
+            navigator.clipboard.writeText(wishText).then(() => {
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
+        });
+
+            // Animated balloons in header background
+        function createBalloonElements() {
+            // No need to dynamically create style tags for each balloon
+            // The styles are now defined in the <style> block
+        }
+
+        createBalloonElements(); // Call once to ensure initial positioning if needed
+
+        let userBirthday = null;
+
+        function calculateNextBirthday(birthday) {
+            const now = new Date();
+            let nextBirthday = new Date(now.getFullYear(), birthday.getMonth(), birthday.getDate());
+
+            if (now > nextBirthday) {
+                nextBirthday = new Date(now.getFullYear() + 1, birthday.getMonth(), birthday.getDate());
+            }
+            return nextBirthday;
+        }
+
+        function updateCountdown() {
+            if (!userBirthday) return;
+
+            const nextBirthday = calculateNextBirthday(userBirthday);
+            const now = new Date();
+            const diff = nextBirthday - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Set up event listeners
+        document.getElementById('set-birthday-btn').addEventListener('click', () => {
+            const input = document.getElementById('birthday-input').value;
+            if (input) {
+                userBirthday = new Date(input);
+                updateCountdown();
+                // Remove the input form after setting the date
+                document.querySelector('#birthday-input').parentElement.style.display = 'none';
+            }
+        });
+
+        // Run counter every second
+        setInterval(updateCountdown, 1000);
+
+        // Cake Decorator Game Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const decorationContainer = document.getElementById('decorationContainer');
+            const resetBtn = document.getElementById('resetBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const notification = document.getElementById('notification');
+            const decorationItems = document.querySelectorAll('.cake-decorator-decoration-item');
+
+            let selectedDecoration = null;
+            let decorations = [];
+            let currentDragging = null;
+            let offsetX, offsetY;
+
+            // Helper function to show notification
+            function showNotification(message) {
+                notification.querySelector('span').textContent = message;
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }
+
+            // Add event listeners to decoration items
+            decorationItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    selectedDecoration = {
+                        type: item.dataset.type,
+                        icon: item.dataset.icon,
+                        color: item.style.color,
+                        custom: item.dataset.custom,
+                        name: item.querySelector('.cake-decorator-decoration-name').textContent,
+                        aesthetic: item.dataset.aesthetic === 'true'
+                    };
+                });
+            });
+
+            // Add decoration to cake when clicking on cake area
+            document.querySelector('.cake-decorator-cake-area').addEventListener('click', (e) => {
+                if (!selectedDecoration || e.target.closest('.cake-decorator-decoration')) return;
+
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                addDecorationToCake(selectedDecoration, x, y);
+            });
+
+            // Reset cake
+            resetBtn.addEventListener('click', () => {
+                decorationContainer.innerHTML = '';
+                decorations = [];
+                showNotification('Cake has been reset!');
+            });
+
+            // Save design
+            saveBtn.addEventListener('click', () => {
+                showNotification('Design saved successfully!');
+            });
+
+            // Function to add decoration to cake
+            function addDecorationToCake(decoration, x, y) {
+                const decoElement = document.createElement('div');
+                decoElement.className = 'cake-decorator-decoration';
+
+                if (decoration.custom === 'candle') {
+                    decoElement.innerHTML = `
+                        <div class="cake-decorator-candle">
+                            <div class="cake-decorator-candle-stick" style="background: ${decoration.color};"></div>
+                            <div class="cake-decorator-candle-flame"></div>
+                        </div>
+                    `;
+                    decoElement.style.width = '15px';
+                    decoElement.style.height = '50px';
+                }
+                else if (decoration.custom === 'rainbow') {
+                    decoElement.innerHTML = `<div class="cake-decorator-rainbow"></div>`;
+                    decoElement.style.width = '80px';
+                    decoElement.style.height = '40px';
+                }
+                else if (decoration.custom === 'unicorn') {
+                    decoElement.innerHTML = ``;
+                    decoElement.style.width = '60px';
+                    decoElement.style.height = '60px';
+                    decoElement.classList.add('cake-decorator-unicorn');
+                }
+                else if (decoration.custom === 'butterfly') {
+                    decoElement.innerHTML = ``;
+                    decoElement.style.width = '60px';
+                    decoElement.style.height = '60px';
+                    decoElement.classList.add('cake-decorator-butterfly-emoji', 'fa-flip'); // Add fa-flip class for animation
+                }
+                else {
+                    decoElement.innerHTML = `<i class="${decoration.icon}" style="color: ${decoration.color};"></i>`;
+                    decoElement.style.fontSize = '2rem';
+                }
+
+                decoElement.style.position = 'absolute';
+                decoElement.style.left = `${x - 20}px`;
+                decoElement.style.top = `${y - 20}px`;
+                decoElement.style.zIndex = decorations.length + 1;
+
+                // Add drag functionality
+                decoElement.addEventListener('mousedown', startDragging);
+
+                decorationContainer.appendChild(decoElement);
+                decorations.push(decoElement);
+            }
+
+            // Drag functionality
+            function startDragging(e) {
+                currentDragging = e.currentTarget;
+                const rect = currentDragging.getBoundingClientRect();
+
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+
+                document.addEventListener('mousemove', dragDecoration);
+                document.addEventListener('mouseup', stopDragging);
+            }
+
+            function dragDecoration(e) {
+                if (!currentDragging) return;
+
+                const containerRect = decorationContainer.getBoundingClientRect();
+                const x = e.clientX - containerRect.left - offsetX;
+                const y = e.clientY - containerRect.top - offsetY;
+
+                currentDragging.style.left = `${x}px`;
+                currentDragging.style.top = `${y}px`;
+            }
+
+            function stopDragging() {
+                currentDragging = null;
+                document.removeEventListener('mousemove', dragDecoration);
+                document.removeEventListener('mouseup', stopDragging);
+            }
+        });
+
+        // Music Player Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const musicToggleBtn = document.getElementById('music-toggle');
+            const birthdayMusic = document.getElementById('birthday-music');
+            
+            // Ensure audio is preloaded
+            birthdayMusic.preload = 'auto';
+            birthdayMusic.load();
+            
+            musicToggleBtn.addEventListener('click', () => {
+                if (birthdayMusic.paused) {
+                    // First user interaction
+                    birthdayMusic.muted = false;
+                    const playPromise = birthdayMusic.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Audio is playing - update button appearance
+                            musicToggleBtn.classList.add('animate-pulse');
+                        }).catch(error => {
+                            // Show user interaction is needed
+                            musicToggleBtn.classList.add('text-red-500');
+                            setTimeout(() => {
+                                musicToggleBtn.classList.remove('text-red-500');
+                            }, 2000);
+                        });
+                    }
+                } else {
+                    birthdayMusic.pause();
+                    musicToggleBtn.classList.remove('animate-pulse');
+                }
+            });
+            
+            // Visual feedback when music plays/pauses
+            birthdayMusic.addEventListener('play', () => {
+                musicToggleBtn.classList.add('animate-pulse');
+            });
+            birthdayMusic.addEventListener('pause', () => {
+                musicToggleBtn.classList.remove('animate-pulse');
+            });
+        });
+    </script>
+</body>
+</html>
