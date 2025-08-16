@@ -3,7 +3,9 @@
 <head>
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ee9ca7">
     <title>Ultimate Birthday Wishes</title>
+    <link rel="shortcut icon" href="./assets/hbd.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap');
@@ -474,8 +476,8 @@
         }
 
         .cake-decorator-floating-element:nth-child(2) {
-            top: 20%;
-            right: 10%;
+            top: 8%;
+             right: 5%;
             font-size: 2.5rem;
             color: #f5f0f0;
             animation: float 10s infinite ease-in-out;
@@ -483,8 +485,8 @@
         }
 
         .cake-decorator-floating-element:nth-child(3) {
-            bottom: 20%;
-            left: 10%;
+            bottom: 10%;
+            left: 5%;
             font-size: 2rem;
             color: #f5f0f0;
             animation: float 12s infinite ease-in-out;
@@ -501,28 +503,18 @@
         }
 
         .cake-decorator-floating-element:nth-child(5) {
-            bottom: 20%;
+            bottom: 8%;
             left: 80%;
             font-size: 2rem;
             color: #f5f0f0;
             animation: float 12s infinite ease-in-out;
             animation-delay: 2s;
         }
-
         .cake-decorator-floating-element:nth-child(6) {
-            bottom: 60%;
-            left: 10%;
-            font-size: 2rem;
-            color: #f5f0f0;
-            animation: float 12s infinite ease-in-out;
-            animation-delay: 2s;
-        }
-
-        .cake-decorator-floating-element:nth-child(7) {
             bottom: 10%;
-            right: 50%;
+            left: 50%;
             font-size: 2rem;
-            color: #f5f0f0;
+            color: #f5f0f0 ;
             animation: float 12s infinite ease-in-out;
             animation-delay: 2s;
         }
@@ -556,34 +548,34 @@
     <!-- Birthday Header with Balloons -->
     <header class="relative overflow-hidden bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 py-16">
         <div class="balloon-container">
-            <div class="balloon balloon-1 bg-pink-400" style="left: 5%; animation-delay: 0s;">
+            <div class="balloon balloon-1 bg-pink-400" style="left: 2%; animation-delay: 0s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-2 bg-yellow-300" style="left: 15%; animation-delay: 1s;">
+            <div class="balloon balloon-2 bg-yellow-300" style="left: 12%; animation-delay: 1s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-3 bg-blue-400" style="left: 25%; animation-delay: 2s;">
+            <div class="balloon balloon-3 bg-blue-400" style="left: 22%; animation-delay: 2s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-4 bg-purple-400" style="left: 35%; animation-delay: 3s;">
+            <div class="balloon balloon-4 bg-purple-400" style="left: 32%; animation-delay: 3s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-5 bg-red-400" style="left: 45%; animation-delay: 4s;">
+            <div class="balloon balloon-5 bg-red-400" style="left: 42%; animation-delay: 4s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-6 bg-green-400" style="left: 55%; animation-delay: 5s;">
+            <div class="balloon balloon-6 bg-green-400" style="left: 52%; animation-delay: 5s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-7 bg-orange-400" style="left: 65%; animation-delay: 6s;">
+            <div class="balloon balloon-7 bg-orange-400" style="left: 62%; animation-delay: 6s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-8 bg-teal-400" style="left: 75%; animation-delay: 7s;">
+            <div class="balloon balloon-8 bg-teal-400" style="left: 72%; animation-delay: 7s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-9 bg-indigo-400" style="left: 85%; animation-delay: 8s;">
+            <div class="balloon balloon-9 bg-indigo-400" style="left: 82%; animation-delay: 8s;">
                 <div class="balloon-string"></div>
             </div>
-            <div class="balloon balloon-10 bg-yellow-200" style="left: 95%; animation-delay: 9s;">
+            <div class="balloon balloon-10 bg-yellow-200" style="left: 92%; animation-delay: 9s;">
                 <div class="balloon-string"></div>
             </div>
         </div>
@@ -605,7 +597,7 @@
                 Start Countdown
             </button>
         </div>
-        <div class="countdown-container flex justify-center gap-4">
+        <div class="countdown-container flex justify-center gap-3">
             <div class="countdown-box bg-pink-100 p-4 rounded-lg">
                 <div class="countdown-number text-3xl font-bold" id="days">00</div>
                 <div class="countdown-label">Days</div>
@@ -614,11 +606,11 @@
                 <div class="countdown-number text-3xl font-bold" id="hours">00</div>
                 <div class="countdown-label">Hours</div>
             </div>
-            <div class="countdown-box bg-yellow-100 p-4 rounded-lg">
+            <div class="countdown-box bg-yellow-100 p-3 rounded-lg">
                 <div class="countdown-number text-3xl font-bold" id="minutes">00</div>
                 <div class="countdown-label">Minutes</div>
             </div>
-            <div class="countdown-box bg-green-100 p-4 rounded-lg">
+            <div class="countdown-box bg-green-100 p-3 rounded-lg">
                 <div class="countdown-number text-3xl font-bold" id="seconds">00</div>
                 <div class="countdown-label">Seconds</div>
             </div>
@@ -673,13 +665,13 @@
                         <h3 class="birthday-font text-3xl mb-4 text-gray-800">Click to Open Your Gift!</h3>
                         <p class="text-gray-600 text-center">Flip the card for your birthday surprise!</p>
                     </div>
-                    <div class="card-back absolute w-full h-full bg-gradient-to-tr from-pink-300 to-cyan-300  rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center">
+                    <div class="card-back absolute w-full h-full bg-gradient-to-tr from-pink-300 to-cyan-300  rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center">
                         <h3 class="birthday-font text-3xl mb-4 text-center animate-bounce">Happy Birthday!</h3>
                         <p class="text-gray-700 mb-6 text-center">May your day be filled with joy, laughter, and wonderful surprises!</p>
                         <div class="relative mt-8 w-48 h-48 perspective-1000">
                             <img src="https://img.freepik.com/free-psd/3d-rendering-birthday-icon-design_23-2151930905.jpg" alt="3D Birthday Cake" class="w-full h-full object-contain rounded-lg shadow-xl transform-style-preserve-3d">
                         </div>
-                        <button class="mt-6 bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full pop-confetti">Blow Out Candle</button>
+                        <button class="mt-6 bg-pink-500 hover:bg-pink-600 text-white px-3 py-2 rounded-full pop-confetti">Blow Out Candle</button>
                     </div>
                 </div>
             </div>
@@ -740,7 +732,6 @@
                         <div class="cake-decorator-floating-element"><i class="fas fa-birthday-cake"></i></div>
                         <div class="cake-decorator-floating-element"><i class="fas fa-crown"></i></div>
                         <div class="cake-decorator-floating-element"><i class="fas fa-star"></i></div>
-                        <div class="cake-decorator-floating-element"><i class="fas fa-heart"></i></div>
                         <div class="cake-decorator-floating-element"><i class="fas fa-gem"></i></div>
 
                         
@@ -775,7 +766,7 @@
             <h2 class="birthday-font text-4xl text-center mb-8 text-orange-600">Birthday Memories</h2>
             <div class="photo-gallery grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="gallery-item overflow-hidden rounded-lg shadow-md">
-                    <img src="assets/a teddy bear and gif.png" alt="Colorful birthday celebration with cake and decorations" class="w-full h-full object-cover transition-transform">
+                    <img src="./assets/a teddy bear and gif.png" alt="Colorful birthday celebration with cake and decorations" class="w-full h-full object-cover transition-transform">
                 </div>
                 <div class="gallery-item overflow-hidden rounded-lg shadow-md">
                     <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c54844bf-0d03-4fd1-8d96-eb52b96c39fc.png" alt="Group of friends laughing and celebrating birthday with balloons in background" class="w-full h-full object-cover transition-transform">
@@ -787,13 +778,13 @@
                     <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4e1ffc8-d61b-4e31-87b3-a744f40c79e6.png" alt="Birthday gifts wrapped in shiny paper with bows on a wooden table" class="w-full h-full object-cover transition-transform">
                 </div>
                 <div class="gallery-item overflow-hidden rounded-lg shadow-md">
-                    <img src="assets/cbirthday picture .png" class="w-full h-full object-cover transition-transform">
+                    <img src="./assets/cbirthday picture .png" class="w-full h-full object-cover transition-transform">
                 </div>
                 <div class="gallery-item overflow-hidden rounded-lg shadow-md">
-                    <img src="assets/few friends celebrat.png" class="w-full h-full object-cover transition-transform">
+                    <img src="./assets/few friends celebrat.png" class="w-full h-full object-cover transition-transform">
                 </div>
                 <div class="gallery-item overflow-hidden rounded-lg shadow-md">
-                    <img src="assets/hbd.png" class="w-full h-full object-cover transition-transform">
+                    <img src="./assets/hbd.png" class="w-full h-full object-cover transition-transform">
                 </div>
                 <div class="gallery-item overflow-hidden rounded-lg shadow-md">
                     <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b060c1a0-bad8-4f7f-817c-f3827fe8de20.png" alt="Close-up of birthday cake being sliced showing layers inside" class="w-full h-full object-cover transition-transform">
